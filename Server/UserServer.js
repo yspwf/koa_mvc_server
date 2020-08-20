@@ -1,4 +1,4 @@
-const { BaseServer } = require('../mvc');
+const { BaseServer } = require('../Yoa');
 module.exports = class UserServer extends BaseServer {
 
     async index() {

@@ -1,4 +1,4 @@
-const { BaseController } = require('../mvc');
+const { BaseController } = require('../Yoa');
 module.exports = class HomeController extends BaseController {
 
 
