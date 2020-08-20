@@ -9,6 +9,7 @@ module.exports = class HomeController extends BaseController {
     }
 
     async test(ctx, next) {
+        request();
         ctx.body = "post test";
     }
 

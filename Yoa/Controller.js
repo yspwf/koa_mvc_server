@@ -1,7 +1,7 @@
 module.exports = class Controller {
 
     constructor(ctx, next) {
-        //console.log(ctx);
+        console.log(ctx);
     }
 }
 

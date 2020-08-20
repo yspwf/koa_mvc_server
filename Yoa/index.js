@@ -176,10 +176,18 @@ module.exports = {
 }
 
 
+
 const appObj = new App();
 
 const KoaBodyparser = require('koa-bodyparser');
 appObj.use(KoaBodyparser());
+
+const KoaStatic = require('koa-static');
+appObj.use(KoaStatic(path.join(ROOT, 'Static')));
+
+
+
+
 
 middleware = require(ROOT + '/middlewares/index');
 
