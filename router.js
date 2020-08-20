@@ -19,12 +19,12 @@ module.exports = (middleware) => {
             'method': 'get',
             'path': '/',
             'action': 'HomeController.index',
-            'middleware': auth
         },
         {
             'method': 'post',
             'path': '/',
-            'action': 'HomeController.test'
+            'action': 'HomeController.test',
+            'middleware': auth
         },
     ]
 }

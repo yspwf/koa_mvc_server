@@ -1,4 +1,5 @@
 module.exports = {
+    'port': 9006,
     'mysql': {
         database: 'blog',
         username: 'root',        //数据库用户名
