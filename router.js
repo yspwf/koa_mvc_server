@@ -12,12 +12,14 @@
 // ];
 
 
-module.exports = () => {
+module.exports = (middleware) => {
+    const { auth, json } = middleware;
     return [
         {
             'method': 'get',
             'path': '/',
-            'action': 'HomeController.index'
+            'action': 'HomeController.index',
+            'middleware': auth
         },
         {
             'method': 'post',

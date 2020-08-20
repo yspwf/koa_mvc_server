@@ -2,6 +2,8 @@ const Application = require('koa');
 const fs = require('fs');
 const path = require('path');
 
+const ROOT = process.cwd();
+
 const Sequelize = require('sequelize');
 
 class Controllerloader {
@@ -81,8 +83,9 @@ class Modelloader {
 
 
 const BaseController = require('./Controller');
-
 const BaseServer = require('./Server');
+
+
 
 const KoaRouter = require('koa-router');
 const router = new KoaRouter();
@@ -175,13 +178,21 @@ module.exports = {
 
 const appObj = new App();
 
-const ROOT = process.cwd();
+const KoaBodyparser = require('koa-bodyparser');
+appObj.use(KoaBodyparser());
+
+middleware = require(ROOT + '/middlewares/index');
+
 const fileDir = ROOT + "/router.js";
-routers = require(fileDir)();
+routers = require(fileDir)(middleware);
 
 routers.forEach((item) => {
     const { action } = item;
     const args = [item.path];
+    if (typeof item.middleware == 'function') {
+        args.push(item.middleware);
+    }
+
     args.push(async (context, next) => {
         const arr = action.split('.');
         if (arr && arr.length) {
